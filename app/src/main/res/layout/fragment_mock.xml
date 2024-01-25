@@ -12,7 +12,7 @@
 
         <variable
             name="viewModel"
-            type="com.ursssu.unscramble.presentation.ViewModel" />
+            type="com.ursssu.unscramble.presentation.MockViewModel" />
     </data>
 
     <LinearLayout
