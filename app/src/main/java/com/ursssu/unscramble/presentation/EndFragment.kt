@@ -1,15 +1,30 @@
 package com.ursssu.unscramble.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.ursssu.unscramble.R
+import com.ursssu.unscramble.databinding.FragmentEndBinding
+import com.ursssu.unscramble.util.binding.BaseFragment
 
-class EndFragment : Fragment() {
+class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        initRetryClickListener()
+        initHomeClickListener()
 
+    }
+
+    private fun initRetryClickListener() {
+        binding.btnEndRetry.setOnClickListener {
+            findNavController().navigate(R.id.timerFragment)
+        }
+    }
+
+    private fun initHomeClickListener() {
+        binding.btnEndHome.setOnClickListener {
+            findNavController().navigate(R.id.homeFragment)
+        }
     }
 }

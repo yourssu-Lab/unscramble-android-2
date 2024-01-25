@@ -1,17 +1,28 @@
 package com.ursssu.unscramble.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.ursssu.unscramble.R
+import com.ursssu.unscramble.databinding.FragmentHomeBinding
+import com.ursssu.unscramble.util.binding.BaseFragment
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        initHomeClickListener()
 
     }
+
+    private fun initHomeClickListener() {
+        binding.btnHome.setOnClickListener {
+            findNavController().navigate(R.id.timerFragment)
+        }
+    }
+
 
 }

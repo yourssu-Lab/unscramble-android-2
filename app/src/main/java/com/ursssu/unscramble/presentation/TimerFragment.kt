@@ -1,16 +1,27 @@
 package com.ursssu.unscramble.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.ursssu.unscramble.R
+import com.ursssu.unscramble.databinding.FragmentTimerBinding
+import com.ursssu.unscramble.util.binding.BaseFragment
 
-class TimerFragment : Fragment() {
+class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        initTimerClickListener()
+
+    }
+
+    private fun initTimerClickListener() {
+        binding.btnTimer.setOnClickListener {
+            findNavController().navigate(R.id.gameStartFragment)
+        }
     }
 
 }
