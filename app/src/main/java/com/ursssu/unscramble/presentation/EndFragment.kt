@@ -27,4 +27,5 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
             findNavController().navigate(R.id.homeFragment)
         }
     }
+
 }
