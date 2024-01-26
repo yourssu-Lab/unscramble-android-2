@@ -12,9 +12,12 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initClickListeners()
+    }
+
+    private fun initClickListeners(){
         initRetryClickListener()
         initHomeClickListener()
-
     }
 
     private fun initRetryClickListener() {

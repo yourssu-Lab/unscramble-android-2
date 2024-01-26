@@ -12,9 +12,14 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initTimerClickListener()
+        initClickListener()
 
     }
+
+    private fun initClickListener(){
+        initTimerClickListener()
+    }
+
 
     private fun initTimerClickListener() {
         binding.btnTimer.setOnClickListener {

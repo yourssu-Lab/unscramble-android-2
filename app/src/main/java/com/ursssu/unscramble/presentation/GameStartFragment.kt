@@ -12,9 +12,14 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initGameStartClickListener()
+        initClickListener()
 
     }
+
+    private fun initClickListener(){
+        initGameStartClickListener()
+    }
+
 
     private fun initGameStartClickListener() {
         binding.btnGameStart.setOnClickListener {
