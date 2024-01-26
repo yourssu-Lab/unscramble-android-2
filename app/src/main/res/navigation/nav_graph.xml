@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ursssu.unscramble.presentation.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_timerFragment"
+            app:destination="@id/timerFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.ursssu.unscramble.presentation.TimerFragment"
+        android:label="fragment_timer"
+        tools:layout="@layout/fragment_timer">
+        <action
+            android:id="@+id/action_timerFragment_to_gameStartFragment"
+            app:destination="@id/gameStartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameStartFragment"
+        android:name="com.ursssu.unscramble.presentation.GameStartFragment"
+        android:label="fragment_game_start"
+        tools:layout="@layout/fragment_game_start">
+        <action
+            android:id="@+id/action_gameStartFragment_to_endFragment"
+            app:destination="@id/endFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.ursssu.unscramble.presentation.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end">
+        <action
+            android:id="@+id/action_endFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_endFragment_to_timerFragment"
+            app:destination="@id/timerFragment"
+            app:popUpTo="@id/timerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
