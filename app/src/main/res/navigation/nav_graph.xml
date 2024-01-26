@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_homeFragment_to_timerFragment"
             app:destination="@id/timerFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
@@ -39,10 +40,14 @@
         tools:layout="@layout/fragment_end">
         <action
             android:id="@+id/action_endFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_endFragment_to_timerFragment"
-            app:destination="@id/timerFragment" />
+            app:destination="@id/timerFragment"
+            app:popUpTo="@id/timerFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

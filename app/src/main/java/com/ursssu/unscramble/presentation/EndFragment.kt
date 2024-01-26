@@ -2,6 +2,7 @@ package com.ursssu.unscramble.presentation
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentEndBinding
@@ -18,13 +19,19 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
 
     private fun initRetryClickListener() {
         binding.btnEndRetry.setOnClickListener {
-            findNavController().navigate(R.id.timerFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(findNavController().graph.startDestination, true)
+                .build()
+            findNavController().navigate(R.id.timerFragment, null, navOptions)
         }
     }
 
     private fun initHomeClickListener() {
         binding.btnEndHome.setOnClickListener {
-            findNavController().navigate(R.id.homeFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(findNavController().graph.startDestination, true)
+                .build()
+            findNavController().navigate(R.id.timerFragment, null, navOptions)
         }
     }
 
