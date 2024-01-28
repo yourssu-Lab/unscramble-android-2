@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="com.yourssu.design.system.atom.BoxButton" />
         <variable
             name="viewModel"
             type="com.ursssu.unscramble.presentation.GameStartFragment" />
-    </data>
 
-    <Button
-        android:id="@+id/btn_game_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="game_start" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.yourssu.design.system.atom.SimpleTextField
+            android:id="@+id/textfiled_game_start"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="200dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <com.yourssu.design.system.atom.BoxButton
+            android:id="@+id/btn_game_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_game_start2"
+            app:type="@{viewModel.SubmitType}"
+            app:size="@{viewModel.size}"
+            app:rounding="@{viewModel.rounding}"
+            />
+        <com.yourssu.design.system.atom.BoxButton
+            android:id="@+id/btn_game_start2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:isDisabled="@{viewModel.isdisabled}"
+            app:type="@{viewModel.SkipType}"
+            app:size="@{viewModel.size}"
+            app:rounding="@{viewModel.rounding}"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
