@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="com.yourssu.design.system.foundation.Icon" />
+
+        <import type="com.yourssu.design.system.atom.BoxButton" />
+
         <variable
             name="viewModel"
-            type="com.ursssu.unscramble.presentation.TimerFragment" />
+            type="com.ursssu.unscramble.presentation.TimerViewModel" />
     </data>
 
-    <Button
-        android:id="@+id/btn_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="timer" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.yourssu.design.system.atom.SimpleTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="54dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.yourssu.design.system.atom.BoxButton
+            android:id="@+id/btn_timer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rounding="@{8}"
+            app:size="@{BoxButton.ExtraLarge}"
+            app:text="@{viewModel.buttonText}"
+            app:type="@{BoxButton.LINE}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
