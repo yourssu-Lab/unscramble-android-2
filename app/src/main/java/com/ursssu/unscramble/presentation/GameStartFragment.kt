@@ -21,12 +21,16 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         super.onViewCreated(view, savedInstanceState)
         initClickListener()
 
+        binding.textTimer.text = "5 : 31"
+
         binding.btnGameStart.text = "Submit"
 
         binding.btnSkip.text = "Skip"
         binding.btnSkip.type = BoxButton.LINE
 
         binding.textfieldGameStart.helperLabelText = ""
+
+        binding.textGameStart.text = "test"
     }
 
     private fun initClickListener(){
