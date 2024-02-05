@@ -1,9 +1,11 @@
 package com.ursssu.unscramble.presentation
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
@@ -17,13 +19,14 @@ import com.yourssu.design.system.foundation.Icon
 
 class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragment_game_start) {
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClickListener()
 
         binding.textTimer.text = "5 : 31"
 
-        binding.btnGameStart.text = "Submit"
+        binding.btnSubmit.text = "Submit"
 
         binding.btnSkip.text = "Skip"
         binding.btnSkip.type = BoxButton.LINE
@@ -31,6 +34,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         binding.textfieldGameStart.helperLabelText = ""
 
         binding.textGameStart.text = "test"
+
     }
 
     private fun initClickListener(){
@@ -48,7 +52,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun initGameStartClickListener() {
-        binding.btnGameStart.setOnClickListener {
+        binding.btnSubmit.setOnClickListener {
             if(checkText(binding.textfieldGameStart.text.toString())) {
                 findNavController().navigate(R.id.endFragment)
             }else{
@@ -56,4 +60,5 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
             }
         }
     }
+
 }
