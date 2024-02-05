@@ -1,17 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="com.ursssu.unscramble.R" />
+
+        <import type="com.yourssu.design.system.atom.BoxButton" />
+
         <variable
             name="viewModel"
-            type="com.ursssu.unscramble.presentation.HomeFragment" />
+            type="com.ursssu.unscramble.presentation.home.HomeViewModel" />
     </data>
 
-    <Button
-        android:id="@+id/btn_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="home" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_131313">
+
+        <ImageView
+            android:id="@+id/iv_home_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_android"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.yourssu.design.system.atom.Text
+            android:id="@+id/text_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unscramble"
+            android:textColor="@color/textBright"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_home_logo" />
+
+        <com.yourssu.design.system.atom.BoxButton
+            android:id="@+id/box_button_home_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="37dp"
+            android:onClick="@{() -> viewModel.navigate()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:rounding="@{8}"
+            app:size="@{BoxButton.Large}"
+            app:text="@{context.getString(R.string.start)}"
+            app:type="@{BoxButton.FILLED}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
