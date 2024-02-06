@@ -7,22 +7,24 @@ import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentTimerBinding
 import com.ursssu.unscramble.util.binding.BaseFragment
-import java.util.Timer
 
 class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer) {
 
-    private val timerViewModel :TimerViewModel by  viewModels()
+    private val timerViewModel: TimerViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.viewModel = timerViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
 
+        initDataBinding()
         initClickListener()
 
     }
 
-    private fun initClickListener(){
+    private fun initDataBinding() {
+        binding.viewModel = timerViewModel
+    }
+
+    private fun initClickListener() {
         initTimerClickListener()
     }
 
