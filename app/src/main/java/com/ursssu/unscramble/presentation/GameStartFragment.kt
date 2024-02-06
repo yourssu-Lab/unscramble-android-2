@@ -1,20 +1,12 @@
 package com.ursssu.unscramble.presentation
 
-import android.content.res.Configuration
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
 import android.view.View
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentGameStartBinding
 import com.ursssu.unscramble.util.binding.BaseFragment
 import com.yourssu.design.system.atom.BoxButton
-import com.yourssu.design.system.atom.EditText
-import com.yourssu.design.system.compose.base.IconSize
-import com.yourssu.design.system.foundation.Icon
 
 
 class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragment_game_start) {
@@ -24,16 +16,16 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         super.onViewCreated(view, savedInstanceState)
         initClickListener()
 
-        binding.textTimer.text = "5 : 31"
+        binding.textGameStartTimer.text = "5 : 31"
 
-        binding.btnSubmit.text = "Submit"
+        binding.btnGameStartSubmit.text = "Submit"
 
-        binding.btnSkip.text = "Skip"
-        binding.btnSkip.type = BoxButton.LINE
+        binding.btnGameStartSkip.text = "Skip"
+        binding.btnGameStartSkip.type = BoxButton.LINE
 
         binding.textfieldGameStart.helperLabelText = ""
 
-        binding.textGameStart.text = "test"
+        binding.textGameStartWord.text = "test"
 
     }
 
@@ -42,8 +34,8 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun checkText(text: String):Boolean{
-        if(text.length == 0) return false
-        for(i in 0..text.length-1){
+        if(text.isEmpty()) return false
+        for(i in 0 until text.length){
             if(!((text[i] in 'A'..'Z') || (text[i] in 'a'..'z'))){
                 return false
             }
@@ -52,7 +44,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun initGameStartClickListener() {
-        binding.btnSubmit.setOnClickListener {
+        binding.btnGameStartSubmit.setOnClickListener {
             if(checkText(binding.textfieldGameStart.text.toString())) {
                 findNavController().navigate(R.id.endFragment)
             }else{
