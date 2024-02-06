@@ -6,11 +6,13 @@
 
         <import type="com.yourssu.design.system.foundation.Icon" />
 
+        <import type="com.ursssu.unscramble.R" />
+
         <import type="com.yourssu.design.system.atom.BoxButton" />
 
         <variable
             name="viewModel"
-            type="com.ursssu.unscramble.presentation.TimerViewModel" />
+            type="com.ursssu.unscramble.presentation.timer.TimerViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +59,7 @@
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="20dp"
                 android:gravity="center_vertical"
-                android:text="@string/timer_time"
+                android:text="@string/timer_delimiter"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@id/et_timer_second"
                 app:layout_constraintStart_toEndOf="@id/et_timer_minute"
@@ -89,7 +91,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
             app:size="@{BoxButton.ExtraLarge}"
-            app:text="@{viewModel.buttonText}"
+            app:text="@{context.getString(R.string.timer_btn_start)}"
             app:type="@{BoxButton.FILLED}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
