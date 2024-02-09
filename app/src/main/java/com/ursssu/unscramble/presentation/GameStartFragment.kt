@@ -29,14 +29,14 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
     }
 
-    private fun initClickListener(){
+    private fun initClickListener() {
         initGameStartClickListener()
     }
 
-    private fun checkText(text: String):Boolean{
-        if(text.isEmpty()) return false
-        for(i in 0 until text.length){
-            if(!((text[i] in 'A'..'Z') || (text[i] in 'a'..'z'))){
+    private fun checkText(text: String): Boolean {
+        if (text.isEmpty()) return false
+        for (i in 0 until text.length) {
+            if (!((text[i] in 'A'..'Z') || (text[i] in 'a'..'z'))) {
                 return false
             }
         }
@@ -45,9 +45,9 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
     private fun initGameStartClickListener() {
         binding.btnGameStartSubmit.setOnClickListener {
-            if(checkText(binding.textfieldGameStart.text.toString())) {
+            if (checkText(binding.textfieldGameStart.text.toString())) {
                 findNavController().navigate(R.id.endFragment)
-            }else{
+            } else {
                 binding.textfieldGameStart.helperLabelText = "영문 대 소문자만 사용가능합니다."
             }
         }
