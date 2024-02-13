@@ -17,6 +17,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
 
         initDataBinding()
         initClickListener()
+        observeTimerInput()
 
     }
 
@@ -32,6 +33,17 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
     private fun initTimerClickListener() {
         binding.btnTimer.setOnClickListener {
             findNavController().navigate(R.id.gameStartFragment)
+        }
+    }
+
+    private fun observeTimerInput() {
+        timerViewModel.isMinuteDisabled.observe(viewLifecycleOwner) { isDisabled ->
+            binding.btnTimer.isDisabled = isDisabled
+            timerViewModel.checkButton()
+        }
+        timerViewModel.isSecondDisabled.observe(viewLifecycleOwner) { isDisabled ->
+            binding.btnTimer.isDisabled = isDisabled
+            timerViewModel.checkButton()
         }
     }
 
