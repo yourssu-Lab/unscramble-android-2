@@ -6,7 +6,6 @@ import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentGameStartBinding
 import com.ursssu.unscramble.util.binding.BaseFragment
-import com.yourssu.design.system.atom.BoxButton
 
 
 class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragment_game_start) {
@@ -17,13 +16,6 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         initClickListener()
 
         binding.textGameStartTimer.text = "5 : 31"
-
-        binding.btnGameStartSubmit.text = "Submit"
-
-        binding.btnGameStartSkip.text = "Skip"
-        binding.btnGameStartSkip.type = BoxButton.LINE
-
-        binding.textfieldGameStart.helperLabelText = ""
 
         binding.textGameStartWord.text = "test"
 

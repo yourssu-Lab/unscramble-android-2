@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="com.yourssu.design.system.atom.BoxButton" />
+        <import type="com.ursssu.unscramble.R" />
         <variable
             name="viewModel"
             type="com.ursssu.unscramble.presentation.GameStartFragment" />
@@ -41,7 +42,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="100dp"
             android:layout_marginRight="20dp"
-            app:layout_constraintTop_toTopOf="@id/text_game_start_word" />
+            app:layout_constraintTop_toTopOf="@id/text_game_start_word"
+            />
 
 
         <com.yourssu.design.system.atom.BoxButton
@@ -51,7 +53,9 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="20dp"
+            app:text="@{context.getString(R.string.game_start_btn_submit)}"
             app:layout_constraintBottom_toTopOf="@id/btn_game_start_skip"
+            app:rounding="@{8}"
             />
 
         <com.yourssu.design.system.atom.BoxButton
@@ -59,10 +63,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="50dp"
+            app:text="@{context.getString(R.string.game_start_btn_skip)}"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:type="@{BoxButton.LINE}"
+            app:rounding="@{8}"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

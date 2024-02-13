@@ -7,4 +7,8 @@
     <string name="timer_delimiter">:</string>
     <string name="timer_title">타이머 설정</string>
     <string name="timer_btn_start">START</string>
+
+    <!--game_start-->
+    <string name="game_start_btn_submit">Submit</string>
+    <string name="game_start_btn_skip">Skip</string>
 </resources>
