@@ -2,9 +2,11 @@ package com.ursssu.unscramble.util.livedata
 
 class MutableSingleLiveData<T> : SingleLiveData<T> {
 
-    constructor() : super()
+    constructor()
 
-    constructor(value: T) : super(value)
+    constructor(value: T) {
+        liveData.value = Event(value)
+    }
 
     public override fun postValue(value: T) {
         super.postValue(value)
