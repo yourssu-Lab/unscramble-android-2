@@ -7,14 +7,6 @@ abstract class SingleLiveData<T> {
 
     protected val liveData = MutableLiveData<Event<T>>()
 
-    protected open fun setValue(value: T) {
-        liveData.value = Event(value)
-    }
-
-    protected open fun postValue(value: T) {
-        liveData.postValue(Event(value))
-    }
-
     val value get() = liveData.value?.content
 
     fun observe(owner: LifecycleOwner, onResult: (T) -> Unit) {

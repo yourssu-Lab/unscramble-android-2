@@ -8,11 +8,12 @@ class MutableSingleLiveData<T> : SingleLiveData<T> {
         liveData.value = Event(value)
     }
 
-    public override fun postValue(value: T) {
-        super.postValue(value)
+    fun setValue(value: T) {
+        liveData.value = Event(value)
     }
 
-    public override fun setValue(value: T) {
-        super.setValue(value)
+    fun postValue(value: T) {
+        liveData.postValue(Event(value))
     }
+
 }
