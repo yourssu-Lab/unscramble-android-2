@@ -3,7 +3,7 @@ package com.ursssu.unscramble.util.livedata
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
  */
-class Event<out T>(private val content: T) {
+class Event<out T>(val content: T) {
 
     var hasBeenHandled = false
         private set // Allow external read but not write
@@ -19,9 +19,4 @@ class Event<out T>(private val content: T) {
             content
         }
     }
-
-    /**
-     * Returns the content, even if it's already been handled.
-     */
-    fun peekContent(): T = content
 }
