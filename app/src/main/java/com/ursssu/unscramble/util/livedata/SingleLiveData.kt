@@ -15,7 +15,7 @@ abstract class SingleLiveData<T> {
         liveData.postValue(Event(value))
     }
 
-    fun getValue() = liveData.value?.content
+    val value get() = liveData.value?.content
 
     fun observe(owner: LifecycleOwner, onResult: (T) -> Unit) {
         liveData.observe(owner) { it.getContentIfNotHandled()?.let(onResult) }
