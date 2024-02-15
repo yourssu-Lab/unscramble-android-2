@@ -19,7 +19,6 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
         initDataBinding()
         initClickListener()
         observeTimerInput()
-
     }
 
     private fun initDataBinding() {
