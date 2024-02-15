@@ -57,6 +57,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     private fun setTimer() {
         val minute = requireArguments().getInt("minute")
         val second = requireArguments().getInt("second")
+
         binding.textGameStartTimer.text =
             getString(R.string.game_start_timer).format(minute, second)
     }
