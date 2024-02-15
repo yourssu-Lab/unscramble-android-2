@@ -1,5 +1,8 @@
 <resources>
+    <!--public-->
     <string name="app_name">Unscramble</string>
+    <string name="start">START</string>
+    <string name="unscramble">UNSCRAMBLE</string>
 
     <!--timer-->
     <string name="timer_text_minute">MM</string>
@@ -7,4 +10,5 @@
     <string name="timer_delimiter">:</string>
     <string name="timer_title">타이머 설정</string>
     <string name="timer_btn_start">START</string>
+
 </resources>
