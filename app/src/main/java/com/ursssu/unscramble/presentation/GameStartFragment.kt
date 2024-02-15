@@ -11,12 +11,13 @@ import com.yourssu.design.system.atom.BoxButton
 
 class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragment_game_start) {
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initClickListener()
 
-        binding.textGameStartTimer.text = "5 : 31"
+        initClickListener()
+        setTimer()
+
+        // binding.textGameStartTimer.text = "5 : 31"
 
         binding.btnGameStartSubmit.text = "Submit"
 
@@ -51,6 +52,13 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
                 binding.textfieldGameStart.helperLabelText = "영문 대 소문자만 사용가능합니다."
             }
         }
+    }
+
+    private fun setTimer() {
+        val minute = requireArguments().getInt("minute")
+        val second = requireArguments().getInt("second")
+        binding.textGameStartTimer.text =
+            getString(R.string.game_start_timer).format(minute, second)
     }
 
 }

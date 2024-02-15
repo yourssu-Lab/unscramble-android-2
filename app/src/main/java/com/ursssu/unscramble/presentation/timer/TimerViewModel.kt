@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class TimerViewModel : ViewModel() {
 
-    private val minute = MutableLiveData<String>()
-    private val second = MutableLiveData<String>()
+    val minute = MutableLiveData<Int>()
+    val second = MutableLiveData<Int>()
 
     val isMinuteDisabled = MutableLiveData(true)
     val isSecondDisabled = MutableLiveData(true)
@@ -19,12 +19,12 @@ class TimerViewModel : ViewModel() {
     }
 
     fun onMinuteChanged(s: Editable) {
-        minute.value = s.toString()
+        minute.value = s.toString().toInt()
         isMinuteDisabled.value = s.isNullOrEmpty()
     }
 
     fun onSecondChanged(s: Editable) {
-        second.value = s.toString()
+        second.value = s.toString().toInt()
         isSecondDisabled.value = s.isNullOrEmpty()
     }
 }
