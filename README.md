@@ -50,7 +50,7 @@ YDS 사용해보기
 
 ################
 # init: 프로젝트 생성
-# chore: (뇌 빼고 할 수 있는)자잘한 수정
+# chore: 자잘한 수정
 # docs: README나 WIKI 등의 문서 개정
 # feat: 새로운 기능 구현
 # fix: 버그, 오류 해결
@@ -70,7 +70,7 @@ Ex) [feat#1] first pr
 #### PR label
 
 - init: 프로젝트 생성
-- chore: (뇌 빼고 할 수 있는)자잘한 수정
+- chore: 자잘한 수정
 - docs: README나 WIKI 등의 문서 개정
 - feat: 새로운 기능 구현
 - fix: 버그, 오류 해결

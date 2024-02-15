@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/timerFragment"
-        android:name="com.ursssu.unscramble.presentation.TimerFragment"
+        android:name="com.ursssu.unscramble.presentation.timer.TimerFragment"
         android:label="fragment_timer"
         tools:layout="@layout/fragment_timer">
         <action
