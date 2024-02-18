@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <import type="com.yourssu.design.system.atom.BoxButton" />
+
         <import type="com.ursssu.unscramble.R" />
+
         <variable
             name="viewModel"
-            type="com.ursssu.unscramble.presentation.GameStartViewModel" />
+            type="com.ursssu.unscramble.presentation.gamestart.GameStartViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +29,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:text = "@{viewModel.gameStartTimerText}"/>
+            app:text="@{viewModel.gameStartTimerText}" />
 
         <com.yourssu.design.system.atom.Text
             android:id="@+id/text_game_start_word"
@@ -35,8 +39,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/text_game_start_timer"
-            app:text = "@{viewModel.gameStartWordText}"
-            />
+            app:text="@{viewModel.gameStartWordText}" />
 
         <com.yourssu.design.system.atom.SimpleTextField
             android:id="@+id/textfield_game_start"
@@ -45,8 +48,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="100dp"
             app:helperLabelText="@{viewModel.textFieldHelperLabelText}"
-            app:layout_constraintTop_toTopOf="@id/text_game_start_word"
-            />
+            app:layout_constraintTop_toTopOf="@id/text_game_start_word" />
 
 
         <com.yourssu.design.system.atom.BoxButton
@@ -58,8 +60,7 @@
             android:layout_marginBottom="20dp"
             app:text="@{context.getString(R.string.game_start_btn_submit)}"
             app:layout_constraintBottom_toTopOf="@id/btn_game_start_skip"
-            app:rounding="@{8}"
-            />
+            app:rounding="@{8}" />
 
         <com.yourssu.design.system.atom.BoxButton
             android:id="@+id/btn_game_start_skip"
@@ -71,8 +72,7 @@
             app:text="@{context.getString(R.string.game_start_btn_skip)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:type="@{BoxButton.LINE}"
-            app:rounding="@{8}"
-            />
+            app:rounding="@{8}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

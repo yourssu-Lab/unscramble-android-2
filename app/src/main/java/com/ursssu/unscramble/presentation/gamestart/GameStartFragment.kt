@@ -1,4 +1,4 @@
-package com.ursssu.unscramble.presentation
+package com.ursssu.unscramble.presentation.gamestart
 
 import android.os.Bundle
 import android.view.View

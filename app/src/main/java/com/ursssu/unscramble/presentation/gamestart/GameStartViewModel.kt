@@ -1,4 +1,4 @@
-package com.ursssu.unscramble.presentation
+package com.ursssu.unscramble.presentation.gamestart
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

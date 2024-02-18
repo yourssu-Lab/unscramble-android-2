@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameStartFragment"
-        android:name="com.ursssu.unscramble.presentation.GameStartFragment"
+        android:name="com.ursssu.unscramble.presentation.gamestart.GameStartFragment"
         android:label="fragment_game_start"
         tools:layout="@layout/fragment_game_start">
         <action
