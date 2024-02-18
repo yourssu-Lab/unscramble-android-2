@@ -15,9 +15,6 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         super.onViewCreated(view, savedInstanceState)
         initClickListener()
         initDataBinding()
-        binding.textGameStartTimer.text = "5 : 31"
-
-        binding.textGameStartWord.text = "test"
 
     }
 
