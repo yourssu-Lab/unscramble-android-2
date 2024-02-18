@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.ursssu.unscramble.presentation.GameStartFragment" />
+            type="com.ursssu.unscramble.presentation.gamestart.GameStartViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

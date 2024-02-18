@@ -1,7 +1,8 @@
-package com.ursssu.unscramble.presentation
+package com.ursssu.unscramble.presentation.gamestart
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentGameStartBinding
@@ -11,11 +12,15 @@ import com.yourssu.design.system.atom.BoxButton
 
 class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragment_game_start) {
 
+    private val viewModel: GameStartViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initClickListener()
         setTimer()
+        observeTimer()
+        observeTimeOut()
 
         // binding.textGameStartTimer.text = "5 : 31"
 
@@ -58,8 +63,21 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         val minute = requireArguments().getInt("minute")
         val second = requireArguments().getInt("second")
 
-        binding.textGameStartTimer.text =
-            getString(R.string.game_start_timer).format(minute, second)
+        viewModel.startTimer(minute, second)
+    }
+
+    private fun observeTimer() {
+        viewModel.timerText.observe(viewLifecycleOwner) { text ->
+            binding.textGameStartTimer.text = text
+        }
+    }
+
+    private fun observeTimeOut() {
+        viewModel.navigateToEnd.observe(viewLifecycleOwner) { isNavigate ->
+            if (isNavigate) {
+                findNavController().navigate(R.id.endFragment)
+            }
+        }
     }
 
 }
