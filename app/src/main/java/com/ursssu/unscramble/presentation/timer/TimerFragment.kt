@@ -11,7 +11,7 @@ import com.ursssu.unscramble.util.binding.BaseFragment
 
 class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer) {
 
-    private val viewModel: TimerViewModel by viewModels()
+    private val timerViewModel: TimerViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -22,7 +22,7 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
     }
 
     private fun initDataBinding() {
-        binding.viewModel = viewModel
+        binding.viewModel = timerViewModel
     }
 
     private fun initClickListener() {
@@ -33,21 +33,21 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
     private fun initTimerClickListener() {
         binding.btnTimer.setOnClickListener {
             val bundle = bundleOf(
-                "minute" to viewModel.minute.value,
-                "second" to viewModel.second.value
+                "minute" to timerViewModel.minute.value,
+                "second" to timerViewModel.second.value
             )
             findNavController().navigate(R.id.gameStartFragment, bundle)
         }
     }
 
     private fun observeTimerInput() {
-        viewModel.isMinuteDisabled.observe(viewLifecycleOwner) { isDisabled ->
+        timerViewModel.isMinuteDisabled.observe(viewLifecycleOwner) { isDisabled ->
             binding.btnTimer.isDisabled = isDisabled
-            viewModel.checkButton()
+            timerViewModel.checkButton()
         }
-        viewModel.isSecondDisabled.observe(viewLifecycleOwner) { isDisabled ->
+        timerViewModel.isSecondDisabled.observe(viewLifecycleOwner) { isDisabled ->
             binding.btnTimer.isDisabled = isDisabled
-            viewModel.checkButton()
+            timerViewModel.checkButton()
         }
     }
 

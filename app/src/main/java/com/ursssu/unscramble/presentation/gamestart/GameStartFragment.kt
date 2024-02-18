@@ -60,10 +60,10 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun setTimer() {
-        val minute = requireArguments().getInt("minute")
-        val second = requireArguments().getInt("second")
+        val minute = requireArguments().getString("minute")?.toInt()
+        val second = requireArguments().getString("second")?.toInt()
 
-        viewModel.startTimer(minute, second)
+        viewModel.startTimer(minute ?: 0, second ?: 0)
     }
 
     private fun observeTimer() {
