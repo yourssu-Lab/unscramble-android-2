@@ -1,18 +1,26 @@
 package com.ursssu.unscramble.presentation.gamestart
 
 import androidx.lifecycle.ViewModel
+import com.ursssu.unscramble.util.livedata.MutableSingleLiveData
+import com.ursssu.unscramble.util.livedata.SingleLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class GameStartViewModel : ViewModel() {
 
+    private val progress: MutableSingleLiveData<Int> = MutableSingleLiveData(1)
+    private val score: MutableSingleLiveData<Int> = MutableSingleLiveData(0)
+
     val textFieldHelperLabelText: MutableStateFlow<String> = MutableStateFlow("")
-    val GameStartWordText: MutableStateFlow<String> = MutableStateFlow("test")
-    val GameStartTimerText: MutableStateFlow<String> = MutableStateFlow("5 : 31")
+    val gameStartWordText: MutableStateFlow<String> = MutableStateFlow("test")
+    val gameStartTimerText: MutableStateFlow<String> = MutableStateFlow("5 : 31")
+    val gameStartProgressText: MutableStateFlow<String> =
+        MutableStateFlow(progress.value.toString() + "/10")
+    val gameStartScoreText: MutableStateFlow<String> = MutableStateFlow(score.value.toString())
+
 
     private fun checkText(text: String): Boolean {
         val regex = Regex("[A-Za-z]+")
-        if (text.isEmpty()) return false
-        return regex.matches(text)
+        return regex.matches(text) && !text.isEmpty()
     }
 
     fun onBtnGameStartSubmit(text: String) {
