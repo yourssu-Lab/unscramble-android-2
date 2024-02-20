@@ -40,6 +40,14 @@ class GameStartViewModel : ViewModel() {
         }
     }
 
+    fun onBtnGameStartSkip() {
+        progress.setValue(progress.value!!.plus(1))
+        if (progress.value!! > 10) {
+            _event.postValue(EventType.NAVIGATION)
+        }
+        gameStartProgressText.value = progress.value.toString() + "/10"
+        textFieldHelperLabelText.value = ""
+    }
 
     enum class EventType {
         NAVIGATION

@@ -25,6 +25,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
     private fun initClickListener() {
         initGameStartClickListener()
+        initSkipClickListener()
     }
 
     private fun initGameStartClickListener() {
@@ -33,7 +34,11 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         }
     }
 
-
+    private fun initSkipClickListener() {
+        binding.btnGameStartSubmit.setOnClickListener {
+            binding.viewModel?.onBtnGameStartSkip()
+        }
+    }
 
     private fun observeScoreEvent() {
         gameStartViewModel.event.observe(viewLifecycleOwner) { eventType ->
