@@ -17,6 +17,8 @@ class GameStartViewModel : ViewModel() {
         MutableStateFlow(progress.value.toString() + "/10")
     val gameStartScoreText: MutableStateFlow<String> = MutableStateFlow(score.value.toString())
 
+    private val _event: MutableSingleLiveData<EventType> = MutableSingleLiveData()
+    val event: SingleLiveData<EventType> = _event
 
     private fun checkText(text: String): Boolean {
         val regex = Regex("[A-Za-z]+")
@@ -25,9 +27,22 @@ class GameStartViewModel : ViewModel() {
 
     fun onBtnGameStartSubmit(text: String) {
         if (checkText(text)) {
-
+            progress.setValue(progress.value!!.plus(1))
+            if (progress.value!! > 10) {
+                _event.postValue(EventType.NAVIGATION)
+            }
+            gameStartProgressText.value = progress.value.toString() + "/10"
+            textFieldHelperLabelText.value = ""
+            score.setValue(score.value!!.plus(10))
+            gameStartScoreText.value = score.value.toString()
         } else {
             textFieldHelperLabelText.value = "영문 대 소문자만 사용가능합니다."
         }
     }
+
+
+    enum class EventType {
+        NAVIGATION
+    }
+
 }
