@@ -12,7 +12,7 @@ class GameStartViewModel : ViewModel() {
 
     val textFieldHelperLabelText: MutableStateFlow<String> = MutableStateFlow("")
     val gameStartWordText: MutableStateFlow<String> = MutableStateFlow("test")
-    val gameStartTimerText: MutableStateFlow<String> = MutableStateFlow("5 : 31")
+    val gameStartTimerText: MutableStateFlow<String> = MutableStateFlow("")
     val gameStartProgressText: MutableStateFlow<String> =
         MutableStateFlow(progress.value.toString() + "/10")
     val gameStartScoreText: MutableStateFlow<String> = MutableStateFlow(score.value.toString())

@@ -35,7 +35,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun initSkipClickListener() {
-        binding.btnGameStartSubmit.setOnClickListener {
+        binding.btnGameStartSkip.setOnClickListener {
             binding.viewModel?.onBtnGameStartSkip()
         }
     }
