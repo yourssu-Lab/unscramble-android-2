@@ -32,10 +32,11 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
     private fun initHomeClickListener() {
         binding.btnEndHome.setOnClickListener {
             val navOptions = NavOptions.Builder()
-                .setPopUpTo(findNavController().graph.startDestinationId, true)
+                .setPopUpTo(R.id.timerFragment, true)
                 .build()
             findNavController().navigate(R.id.homeFragment, null, navOptions)
         }
     }
+
 
 }
