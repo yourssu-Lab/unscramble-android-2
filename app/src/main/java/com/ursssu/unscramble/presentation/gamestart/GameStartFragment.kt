@@ -72,10 +72,8 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun observeTimeOut() {
-        viewModel.navigateToEnd.observe(viewLifecycleOwner) { isNavigate ->
-            if (isNavigate) {
-                findNavController().navigate(R.id.endFragment)
-            }
+        viewModel.navigateToEnd.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.endFragment)
         }
     }
 

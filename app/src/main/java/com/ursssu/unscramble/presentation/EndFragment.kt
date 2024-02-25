@@ -15,7 +15,7 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
         initClickListeners()
     }
 
-    private fun initClickListeners(){
+    private fun initClickListeners() {
         initRetryClickListener()
         initHomeClickListener()
     }
