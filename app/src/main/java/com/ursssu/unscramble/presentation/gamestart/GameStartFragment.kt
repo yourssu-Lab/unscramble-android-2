@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentGameStartBinding
+import com.ursssu.unscramble.presentation.timer.TimerFragmentArgs
 import com.ursssu.unscramble.util.binding.BaseFragment
 import com.yourssu.design.system.atom.BoxButton
-
 
 class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragment_game_start) {
 
@@ -21,8 +22,6 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         setTimer()
         observeTimer()
         observeTimeOut()
-
-        // binding.textGameStartTimer.text = "5 : 31"
 
         binding.btnGameStartSubmit.text = "Submit"
 
@@ -60,10 +59,12 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun setTimer() {
-        val minute = requireArguments().getString("minute")?.toInt()
-        val second = requireArguments().getString("second")?.toInt()
+        val args: TimerFragmentArgs by navArgs()
 
-        viewModel.startTimer(minute ?: 0, second ?: 0)
+        val minute = args.minute.toInt()
+        val second = args.second.toInt()
+
+        viewModel.startTimer(minute, second)
     }
 
     private fun observeTimer() {

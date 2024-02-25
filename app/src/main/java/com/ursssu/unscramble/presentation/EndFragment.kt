@@ -23,7 +23,7 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
     private fun initRetryClickListener() {
         binding.btnEndRetry.setOnClickListener {
             val navOptions = NavOptions.Builder()
-                .setPopUpTo(findNavController().graph.startDestination, true)
+                .setPopUpTo(findNavController().graph.startDestinationId, true)
                 .build()
             findNavController().navigate(R.id.timerFragment, null, navOptions)
         }
@@ -32,9 +32,9 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
     private fun initHomeClickListener() {
         binding.btnEndHome.setOnClickListener {
             val navOptions = NavOptions.Builder()
-                .setPopUpTo(findNavController().graph.startDestination, true)
+                .setPopUpTo(findNavController().graph.startDestinationId, true)
                 .build()
-            findNavController().navigate(R.id.timerFragment, null, navOptions)
+            findNavController().navigate(R.id.homeFragment, null, navOptions)
         }
     }
 

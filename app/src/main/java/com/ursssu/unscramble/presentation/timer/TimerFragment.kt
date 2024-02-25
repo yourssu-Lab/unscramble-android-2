@@ -2,7 +2,6 @@ package com.ursssu.unscramble.presentation.timer
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
@@ -34,11 +33,13 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
     }
 
     private fun sendDataToGameStart() {
-        val bundle = bundleOf(
-            "minute" to timerViewModel.minute.value,
-            "second" to timerViewModel.second.value
+        val minute = timerViewModel.minute.value
+        val second = timerViewModel.second.value
+        val action = TimerFragmentDirections.actionTimerFragmentToGameStartFragment(
+            minute.orEmpty(),
+            second.orEmpty()
         )
-        findNavController().navigate(R.id.gameStartFragment, bundle)
+        findNavController().navigate(action)
     }
 
 }
