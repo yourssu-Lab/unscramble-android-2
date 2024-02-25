@@ -22,7 +22,7 @@
             android:layout_marginTop="100dp"
             android:background="@drawable/timer_oval_background"
             android:gravity="center"
-            android:text="@string/game_start_timer"
+            android:text="@{viewModel.timerText}"
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintLeft_toLeftOf="parent"

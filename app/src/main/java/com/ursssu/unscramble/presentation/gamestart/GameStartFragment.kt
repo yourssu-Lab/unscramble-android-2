@@ -20,7 +20,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
         initClickListener()
         setTimer()
-        observeTimer()
+        bindViewModel()
         observeTimeOut()
 
         binding.btnGameStartSubmit.text = "Submit"
@@ -67,10 +67,8 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         viewModel.startTimer(minute, second)
     }
 
-    private fun observeTimer() {
-        viewModel.timerText.observe(viewLifecycleOwner) { text ->
-            binding.textGameStartTimer.text = text
-        }
+    private fun bindViewModel() {
+        binding.viewModel = viewModel
     }
 
     private fun observeTimeOut() {
