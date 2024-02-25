@@ -2,6 +2,7 @@ package com.ursssu.unscramble.presentation
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
@@ -16,8 +17,19 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
     }
 
     private fun initClickListeners() {
+        initOnBackPressedListener()
         initRetryClickListener()
         initHomeClickListener()
+    }
+
+    private fun initOnBackPressedListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().finish()
+                }
+            })
     }
 
     private fun initRetryClickListener() {
@@ -37,6 +49,5 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
             findNavController().navigate(R.id.homeFragment, null, navOptions)
         }
     }
-
 
 }
