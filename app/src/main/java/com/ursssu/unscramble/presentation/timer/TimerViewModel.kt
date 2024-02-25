@@ -5,14 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ursssu.unscramble.util.livedata.MutableSingleLiveData
 import com.ursssu.unscramble.util.livedata.SingleLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class TimerViewModel : ViewModel() {
 
     val minute = MutableLiveData<String>()
     val second = MutableLiveData<String>()
 
-    val isMinuteDisabled = MutableLiveData(true)
-    val isSecondDisabled = MutableLiveData(true)
+    private val _isMinuteDisabled: MutableStateFlow<Boolean> = MutableStateFlow(true)
+    val isMinuteDisabled: StateFlow<Boolean> = _isMinuteDisabled.asStateFlow()
+
+    private val _isSecondDisabled : MutableStateFlow<Boolean> = MutableStateFlow(true)
+    val isSecondDisabled : StateFlow<Boolean> = _isSecondDisabled.asStateFlow()
 
     val isButtonValid: MutableLiveData<Boolean> = MutableLiveData(false)
 
@@ -20,17 +26,17 @@ class TimerViewModel : ViewModel() {
     val event: SingleLiveData<EventType> = _event
 
     fun checkButton() {
-        isButtonValid.value = !(isMinuteDisabled.value == false && isSecondDisabled.value == false)
+        isButtonValid.value = !(!_isMinuteDisabled.value && !_isSecondDisabled.value)
     }
 
     fun onMinuteChanged(s: Editable) {
         minute.value = s.toString()
-        isMinuteDisabled.value = s.isEmpty()
+        _isMinuteDisabled.value = s.isEmpty()
     }
 
     fun onSecondChanged(s: Editable) {
         second.value = s.toString()
-        isSecondDisabled.value = s.isEmpty()
+        _isSecondDisabled.value = s.isEmpty()
     }
 
     fun navigate() {

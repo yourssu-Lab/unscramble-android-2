@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentTimerBinding
 import com.ursssu.unscramble.presentation.timer.TimerViewModel.EventType
 import com.ursssu.unscramble.util.binding.BaseFragment
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.launch
 
 class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer) {
 
@@ -43,13 +46,16 @@ class TimerFragment : BaseFragment<FragmentTimerBinding>(R.layout.fragment_timer
     }
 
     private fun observeTimerInput() {
-        timerViewModel.isMinuteDisabled.observe(viewLifecycleOwner) { isDisabled ->
-            binding.btnTimer.isDisabled = isDisabled
-            timerViewModel.checkButton()
-        }
-        timerViewModel.isSecondDisabled.observe(viewLifecycleOwner) { isDisabled ->
-            binding.btnTimer.isDisabled = isDisabled
-            timerViewModel.checkButton()
+        lifecycleScope.launch {
+            combine(
+                timerViewModel.isMinuteDisabled,
+                timerViewModel.isSecondDisabled
+            ) { isMinuteDisabled, isSecondDisabled ->
+                isMinuteDisabled || isSecondDisabled
+            }.collect { isDisabled ->
+                binding.btnTimer.isDisabled = isDisabled
+                timerViewModel.checkButton()
+            }
         }
     }
 
