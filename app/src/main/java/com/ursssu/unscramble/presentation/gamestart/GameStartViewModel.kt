@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.ursssu.unscramble.util.livedata.MutableSingleLiveData
 import com.ursssu.unscramble.util.livedata.SingleLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
+import java.util.Random
 
 class GameStartViewModel : ViewModel() {
 
@@ -11,7 +12,7 @@ class GameStartViewModel : ViewModel() {
     private val score: MutableSingleLiveData<Int> = MutableSingleLiveData(0)
 
     val textFieldHelperLabelText: MutableStateFlow<String> = MutableStateFlow("")
-    val gameStartWordText: MutableStateFlow<String> = MutableStateFlow("test")
+    val gameStartWordText: MutableStateFlow<String> = MutableStateFlow("")
     val gameStartTimerText: MutableStateFlow<String> = MutableStateFlow("")
     val gameStartProgressText: MutableStateFlow<String> =
         MutableStateFlow(progress.value.toString() + "/10")
@@ -19,6 +20,32 @@ class GameStartViewModel : ViewModel() {
 
     private val _event: MutableSingleLiveData<EventType> = MutableSingleLiveData()
     val event: SingleLiveData<EventType> = _event
+
+    private var wordState: String = ""
+
+    val wordsList =
+        listOf(
+            "genuine",
+            "holiday",
+            "uniform",
+            "harmony",
+            "force",
+            "bread",
+            "normal",
+            "expose",
+            "tear",
+            "fast"
+        )
+
+    init {
+        wordRandomScramble(randomWord())
+    }
+
+    private fun randomWord(): String {
+        val random = Random()
+        wordState = wordsList[random.nextInt(wordsList.size)]
+        return wordState
+    }
 
     private fun checkText(text: String): Boolean {
         val regex = Regex("[A-Za-z]+")
@@ -28,16 +55,19 @@ class GameStartViewModel : ViewModel() {
     fun onBtnGameStartSubmit(text: String) {
         if (checkText(text)) {
             progress.setValue(progress.value!!.plus(1))
+            textFieldHelperLabelText.value = ""
             if (progress.value!! > 10) {
                 _event.postValue(EventType.NAVIGATION)
             }
-            gameStartProgressText.value = progress.value.toString() + "/10"
-            textFieldHelperLabelText.value = ""
-            score.setValue(score.value!!.plus(10))
-            gameStartScoreText.value = score.value.toString()
+            if (text == wordState) {
+                score.setValue(score.value!!.plus(10))
+            }
         } else {
             textFieldHelperLabelText.value = "영문 대 소문자만 사용가능합니다."
         }
+        gameStartProgressText.value = progress.value.toString() + "/10"
+        gameStartScoreText.value = score.value.toString()
+        wordRandomScramble(randomWord())
     }
 
     fun onBtnGameStartSkip() {
@@ -47,6 +77,19 @@ class GameStartViewModel : ViewModel() {
         }
         gameStartProgressText.value = progress.value.toString() + "/10"
         textFieldHelperLabelText.value = ""
+        wordRandomScramble(randomWord())
+    }
+
+    private fun wordRandomScramble(_word: String) {
+        var word = _word
+        var scramdbledWord = ""
+        val random = Random()
+        for (i in _word) {
+            val tempIndex = random.nextInt(word.length)
+            scramdbledWord += word[tempIndex]
+            word = word.substring(0, tempIndex) + word.substring(tempIndex + 1)
+        }
+        gameStartWordText.value = scramdbledWord
     }
 
     enum class EventType {
