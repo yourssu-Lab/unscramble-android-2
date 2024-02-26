@@ -37,17 +37,17 @@ class GameStartViewModel : ViewModel() {
             "fast"
         )
 
-    init {
+    init { //단어 제시하는 MutableStateFlow에 직접 함수를 넣어 리턴을 하려했으나 안돼서 생성자로 처리
         wordRandomScramble(randomWord())
     }
 
-    private fun randomWord(): String {
+    private fun randomWord(): String { //무작위의 단어 리턴
         val random = Random()
         wordState = wordsList[random.nextInt(wordsList.size)]
         return wordState
     }
 
-    private fun checkText(text: String): Boolean {
+    private fun checkText(text: String): Boolean { //영 대소문자 검사
         val regex = Regex("[A-Za-z]+")
         return regex.matches(text) && !text.isEmpty()
     }
@@ -80,7 +80,7 @@ class GameStartViewModel : ViewModel() {
         wordRandomScramble(randomWord())
     }
 
-    private fun wordRandomScramble(_word: String) {
+    private fun wordRandomScramble(_word: String) { //매개변수로 단어를 받고 단어를 섞은 후 리턴
         var word = _word
         var scramdbledWord = ""
         val random = Random()

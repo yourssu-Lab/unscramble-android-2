@@ -24,11 +24,11 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun initClickListener() {
-        initGameStartClickListener()
+        initSubmitClickListener()
         initSkipClickListener()
     }
 
-    private fun initGameStartClickListener() {
+    private fun initSubmitClickListener() {
         binding.btnGameStartSubmit.setOnClickListener {
             binding.viewModel?.onBtnGameStartSubmit(binding.textfieldGameStart.text.toString())
         }
@@ -40,7 +40,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         }
     }
 
-    private fun observeScoreEvent() {
+    private fun observeScoreEvent() { //진행상황이 문제 10개를 넘어갈 시에 네비게이션
         gameStartViewModel.event.observe(viewLifecycleOwner) { eventType ->
             when (eventType) {
                 GameStartViewModel.EventType.NAVIGATION -> findNavController().navigate(R.id.action_gameStartFragment_to_endFragment)
