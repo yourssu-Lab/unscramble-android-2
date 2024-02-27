@@ -23,15 +23,23 @@
         <action
             android:id="@+id/action_timerFragment_to_gameStartFragment"
             app:destination="@id/gameStartFragment" />
+        <argument
+            android:name="minute" />
+        <argument
+            android:name="second" />
     </fragment>
     <fragment
         android:id="@+id/gameStartFragment"
-        android:name="com.ursssu.unscramble.presentation.GameStartFragment"
+        android:name="com.ursssu.unscramble.presentation.gamestart.GameStartFragment"
         android:label="fragment_game_start"
         tools:layout="@layout/fragment_game_start">
         <action
             android:id="@+id/action_gameStartFragment_to_endFragment"
             app:destination="@id/endFragment" />
+        <argument
+            android:name="minute" />
+        <argument
+            android:name="second" />
     </fragment>
     <fragment
         android:id="@+id/endFragment"

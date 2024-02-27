@@ -47,6 +47,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:afterTextChanged="@{viewModel.onMinuteChanged}"
                 android:hint="@string/timer_text_minute"
                 android:inputType="number"
                 android:textColor="@color/textPrimary" />
@@ -66,6 +67,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:afterTextChanged="@{viewModel.onSecondChanged}"
                 android:hint="@string/timer_text_second"
                 android:inputType="number"
                 android:textColor="@color/textPrimary" />
@@ -78,12 +80,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="40dp"
+            android:onClick="@{() -> viewModel.navigate()}"
+            app:isDisabled="@{viewModel.minute.isEmpty() || viewModel.second.isEmpty()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
             app:size="@{BoxButton.ExtraLarge}"
-            app:text="@{context.getString(R.string.timer_btn_start)}"
+            app:text="@{@string/timer_btn_start}"
             app:type="@{BoxButton.FILLED}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

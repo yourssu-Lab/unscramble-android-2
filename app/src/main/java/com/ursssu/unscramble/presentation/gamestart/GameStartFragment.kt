@@ -1,22 +1,27 @@
-package com.ursssu.unscramble.presentation
+package com.ursssu.unscramble.presentation.gamestart
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ursssu.unscramble.R
 import com.ursssu.unscramble.databinding.FragmentGameStartBinding
+import com.ursssu.unscramble.presentation.timer.TimerFragmentArgs
 import com.ursssu.unscramble.util.binding.BaseFragment
 import com.yourssu.design.system.atom.BoxButton
 
-
 class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragment_game_start) {
 
+    private val viewModel: GameStartViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initClickListener()
 
-        binding.textGameStartTimer.text = "5 : 31"
+        initClickListener()
+        setTimer()
+        bindViewModel()
+        observeTimeOut()
 
         binding.btnGameStartSubmit.text = "Submit"
 
@@ -50,6 +55,25 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
             } else {
                 binding.textfieldGameStart.helperLabelText = "영문 대 소문자만 사용가능합니다."
             }
+        }
+    }
+
+    private fun setTimer() {
+        val args: TimerFragmentArgs by navArgs()
+
+        val minute = args.minute.toInt()
+        val second = args.second.toInt()
+
+        viewModel.startTimer(minute, second)
+    }
+
+    private fun bindViewModel() {
+        binding.viewModel = viewModel
+    }
+
+    private fun observeTimeOut() {
+        viewModel.navigateToEnd.observe(viewLifecycleOwner) {
+            findNavController().navigate(R.id.endFragment)
         }
     }
 
