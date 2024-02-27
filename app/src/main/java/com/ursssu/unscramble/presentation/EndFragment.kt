@@ -17,12 +17,12 @@ class EndFragment : BaseFragment<FragmentEndBinding>(R.layout.fragment_end) {
     }
 
     private fun initClickListeners() {
-        initOnBackPressedListener()
+        overrideOnBackPressed()
         initRetryClickListener()
         initHomeClickListener()
     }
 
-    private fun initOnBackPressedListener() {
+    private fun overrideOnBackPressed() {
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
