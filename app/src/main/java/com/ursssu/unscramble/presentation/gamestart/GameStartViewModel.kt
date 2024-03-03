@@ -1,9 +1,9 @@
 package com.ursssu.unscramble.presentation.gamestart
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ursssu.unscramble.util.livedata.MutableSingleLiveData
 import com.ursssu.unscramble.util.livedata.SingleLiveData
-import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.Random
 
 class GameStartViewModel : ViewModel() {
@@ -11,12 +11,12 @@ class GameStartViewModel : ViewModel() {
     private val progress: MutableSingleLiveData<Int> = MutableSingleLiveData(1)
     private val score: MutableSingleLiveData<Int> = MutableSingleLiveData(0)
 
-    val textFieldHelperLabelText: MutableStateFlow<String> = MutableStateFlow("")
-    val gameStartWordText: MutableStateFlow<String> = MutableStateFlow("")
-    val gameStartTimerText: MutableStateFlow<String> = MutableStateFlow("")
-    val gameStartProgressText: MutableStateFlow<String> =
-        MutableStateFlow(progress.value.toString() + "/10")
-    val gameStartScoreText: MutableStateFlow<String> = MutableStateFlow(score.value.toString())
+    val textFieldHelperLabelText: MutableLiveData<String> = MutableLiveData("")
+    val gameStartWordText: MutableLiveData<String> = MutableLiveData("")
+    val gameStartTimerText: MutableLiveData<String> = MutableLiveData("")
+    val gameStartProgressText: MutableLiveData<String> =
+        MutableLiveData(progress.value.toString() + "/10")
+    val gameStartScoreText: MutableLiveData<String> = MutableLiveData(score.value.toString())
 
     private val _event: MutableSingleLiveData<EventType> = MutableSingleLiveData()
     val event: SingleLiveData<EventType> = _event
@@ -47,13 +47,10 @@ class GameStartViewModel : ViewModel() {
         return wordState
     }
 
-    private fun checkText(text: String): Boolean { //영 대소문자 검사
-        val regex = Regex("[A-Za-z]+")
-        return regex.matches(text) && !text.isEmpty()
-    }
+    private fun String.checkText(): Boolean = Regex("[A-Za-z]+").matches(this) && !this.isEmpty()
 
     fun onBtnGameStartSubmit(text: String) {
-        if (checkText(text)) {
+        if (text.checkText()) {
             progress.setValue(progress.value!!.plus(1))
             textFieldHelperLabelText.value = ""
             if (progress.value!! > 10) {
