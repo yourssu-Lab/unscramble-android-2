@@ -106,7 +106,7 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="20dp"
-            app:text="@{context.getString(R.string.game_start_btn_submit)}"
+            app:text="@{@string/game_start_btn_submit}"
             app:layout_constraintBottom_toTopOf="@id/btn_game_start_skip"
             app:rounding="@{8}" />
 
@@ -117,7 +117,7 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="50dp"
-            app:text="@{context.getString(R.string.game_start_btn_skip)}"
+            app:text="@{@string/game_start_btn_skip}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:type="@{BoxButton.LINE}"
             app:rounding="@{8}" />
