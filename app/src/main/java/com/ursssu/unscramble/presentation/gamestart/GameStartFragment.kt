@@ -30,13 +30,13 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
     private fun initSubmitClickListener() {
         binding.btnGameStartSubmit.setOnClickListener {
-            binding.viewModel?.onBtnGameStartSubmit(binding.textfieldGameStart.text.toString())
+            gameStartViewModel?.onBtnGameStartSubmit(binding.textfieldGameStart.text.toString())
         }
     }
 
     private fun initSkipClickListener() {
         binding.btnGameStartSkip.setOnClickListener {
-            binding.viewModel?.onBtnGameStartSkip()
+            gameStartViewModel?.onBtnGameStartSkip()
         }
     }
 
