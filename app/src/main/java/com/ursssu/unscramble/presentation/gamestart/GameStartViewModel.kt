@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.ursssu.unscramble.util.livedata.MutableSingleLiveData
 import com.ursssu.unscramble.util.livedata.SingleLiveData
 import java.util.Random
+import java.util.Timer
+import kotlin.concurrent.timer
+
 
 class GameStartViewModel : ViewModel() {
 
@@ -22,6 +25,13 @@ class GameStartViewModel : ViewModel() {
     val event: SingleLiveData<EventType> = _event
 
     private var wordState: String = ""
+
+
+    private var time = 0
+    private var timerTask: Timer? = null
+
+    val timerText = MutableLiveData<String>()
+    val navigateToEnd = MutableLiveData<Boolean>()
 
     val wordsList =
         listOf(
@@ -93,4 +103,22 @@ class GameStartViewModel : ViewModel() {
         NAVIGATION
     }
 
+    fun startTimer(minute: Int, second: Int) {
+        val totalSeconds = minute * 60 + second
+
+        timerTask = timer(period = 1000) {
+            if (totalSeconds - time <= 0) {
+                timerTask?.cancel()
+                navigateToEnd.postValue(true)
+            } else {
+                time++
+
+                val currSeconds = totalSeconds - time
+                val min = currSeconds / 60
+                val sec = currSeconds % 60
+
+                gameStartTimerText.postValue("$min : $sec")
+            }
+        }
+    }
 }

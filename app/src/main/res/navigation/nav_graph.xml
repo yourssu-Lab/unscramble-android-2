@@ -23,6 +23,10 @@
         <action
             android:id="@+id/action_timerFragment_to_gameStartFragment"
             app:destination="@id/gameStartFragment" />
+        <argument
+            android:name="minute" />
+        <argument
+            android:name="second" />
     </fragment>
     <fragment
         android:id="@+id/gameStartFragment"
@@ -32,6 +36,10 @@
         <action
             android:id="@+id/action_gameStartFragment_to_endFragment"
             app:destination="@id/endFragment" />
+        <argument
+            android:name="minute" />
+        <argument
+            android:name="second" />
     </fragment>
     <fragment
         android:id="@+id/endFragment"
