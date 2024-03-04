@@ -23,6 +23,15 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         bindViewModel()
         observeTimeOut()
 
+        binding.btnGameStartSubmit.text = "Submit"
+
+        binding.btnGameStartSkip.text = "Skip"
+        binding.btnGameStartSkip.type = BoxButton.LINE
+
+        binding.textfieldGameStart.helperLabelText = ""
+
+        binding.textGameStartWord.text = "test"
+
     }
 
     private fun initClickListener() {
