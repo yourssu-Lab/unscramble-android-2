@@ -19,7 +19,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
         initClickListener()
         setTimer()
-        bindViewModel()
+        initDataBinding()
         observeTimeOut()
         observeScoreEvent()
 
@@ -42,7 +42,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
     }
 
     private fun initSkipClickListener() {
-        binding.btnGameStartSubmit.setOnClickListener {
+        binding.btnGameStartSkip.setOnClickListener {
             binding.viewModel?.onBtnGameStartSkip()
         }
     }
@@ -64,9 +64,6 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         gameStartViewModel.startTimer(minute, second)
     }
 
-    private fun bindViewModel() {
-        binding.viewModel = gameStartViewModel
-    }
 
     private fun observeTimeOut() {
         gameStartViewModel.navigateToEnd.observe(viewLifecycleOwner) {
