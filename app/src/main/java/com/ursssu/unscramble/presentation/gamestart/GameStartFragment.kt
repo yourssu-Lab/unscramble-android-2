@@ -27,6 +27,7 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
     private fun initDataBinding() {
         binding.viewModel = gameStartViewModel
+
     }
 
     private fun initClickListener() {

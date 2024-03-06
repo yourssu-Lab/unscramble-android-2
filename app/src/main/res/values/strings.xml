@@ -1,8 +1,5 @@
 <resources>
-    <!--public-->
     <string name="app_name">Unscramble</string>
-    <string name="start">START</string>
-    <string name="unscramble">UNSCRAMBLE</string>
 
     <!--timer-->
     <string name="timer_text_minute">MM</string>
