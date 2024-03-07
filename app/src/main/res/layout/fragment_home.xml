@@ -33,7 +33,7 @@
             android:id="@+id/text_home_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/unscramble"
+            android:text="@string/home_unscramble"
             android:textColor="@color/textBright"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:rounding="@{8}"
             app:size="@{BoxButton.Large}"
-            app:text="@{@string/start}"
+            app:text="@{@string/home_start}"
             app:type="@{BoxButton.FILLED}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

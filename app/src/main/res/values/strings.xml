@@ -12,4 +12,9 @@
     <string name="game_start_btn_submit">Submit</string>
     <string name="game_start_btn_skip">Skip</string>
     <string name="game_start_timer">%d : %d</string>
+
+    <!--home-->
+    <string name="home_unscramble">UNSCRAMBLE</string>
+    <string name="home_start">START</string>
+
 </resources>
