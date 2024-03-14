@@ -2,6 +2,7 @@ package com.ursssu.unscramble.presentation.gamestart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ursssu.unscramble.R
 import com.ursssu.unscramble.util.livedata.MutableSingleLiveData
 import com.ursssu.unscramble.util.livedata.SingleLiveData
 import java.util.Random
@@ -12,13 +13,18 @@ import kotlin.concurrent.timer
 class GameStartViewModel : ViewModel() {
 
     private val progress: MutableSingleLiveData<Int> = MutableSingleLiveData(1)
+
     private val score: MutableSingleLiveData<Int> = MutableSingleLiveData(0)
 
     val textFieldHelperLabelText: MutableLiveData<String> = MutableLiveData("")
+
     val gameStartWordText: MutableLiveData<String> = MutableLiveData("")
+
     val gameStartTimerText: MutableLiveData<String> = MutableLiveData("")
+
     val gameStartProgressText: MutableLiveData<String> =
         MutableLiveData(progress.value.toString() + "/10")
+
     val gameStartScoreText: MutableLiveData<String> = MutableLiveData(score.value.toString())
 
     private val _event: MutableSingleLiveData<EventType> = MutableSingleLiveData()
@@ -26,11 +32,12 @@ class GameStartViewModel : ViewModel() {
 
     private var wordState: String = ""
 
-
     private var time = 0
+
     private var timerTask: Timer? = null
 
     val timerText = MutableLiveData<String>()
+
     val navigateToEnd = MutableLiveData<Boolean>()
 
     val wordsList =
@@ -57,20 +64,20 @@ class GameStartViewModel : ViewModel() {
         return wordState
     }
 
-    private fun String.checkText(): Boolean = Regex("[A-Za-z]+").matches(this) && !this.isEmpty()
+    private fun String.checkText(): Boolean = Regex("[A-Za-z]+").matches(this) && this.isNotEmpty()
 
     fun onBtnGameStartSubmit(text: String) {
         if (text.checkText()) {
-            progress.setValue(progress.value!!.plus(1))
+            progress.value?.let { progress.setValue(it.plus(1)) }
             textFieldHelperLabelText.value = ""
-            if (progress.value!! > 10) {
+            if ((progress.value ?: 0) > 10) {
                 _event.postValue(EventType.NAVIGATION)
             }
             if (text == wordState) {
-                score.setValue(score.value!!.plus(10))
+                score.value?.let { score.setValue(it.plus(10)) }
             }
         } else {
-            textFieldHelperLabelText.value = "영문 대 소문자만 사용가능합니다."
+            textFieldHelperLabelText.value = R.string.game_start_helper_label.toString()
         }
         gameStartProgressText.value = progress.value.toString() + "/10"
         gameStartScoreText.value = score.value.toString()
@@ -78,8 +85,8 @@ class GameStartViewModel : ViewModel() {
     }
 
     fun onBtnGameStartSkip() {
-        progress.setValue(progress.value!!.plus(1))
-        if (progress.value!! > 10) {
+        progress.value?.let { progress.setValue(it.plus(1)) }
+        if ((progress.value ?: 0) > 10) {
             _event.postValue(EventType.NAVIGATION)
         }
         gameStartProgressText.value = progress.value.toString() + "/10"

@@ -12,6 +12,7 @@
     <string name="game_start_btn_submit">Submit</string>
     <string name="game_start_btn_skip">Skip</string>
     <string name="game_start_timer">%d : %d</string>
+    <string name="game_start_helper_label">영문 대 소문자만 사용가능합니다.</string>
 
     <!--home-->
     <string name="home_unscramble">UNSCRAMBLE</string>

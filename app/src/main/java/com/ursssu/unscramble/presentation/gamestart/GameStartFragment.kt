@@ -35,7 +35,6 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
         initSkipClickListener()
     }
 
-
     private fun initGameStartClickListener() {
         binding.btnGameStartSubmit.setOnClickListener {
             binding.viewModel?.onBtnGameStartSubmit(binding.textfieldGameStart.text.toString())
@@ -64,7 +63,6 @@ class GameStartFragment : BaseFragment<FragmentGameStartBinding>(R.layout.fragme
 
         gameStartViewModel.startTimer(minute, second)
     }
-
 
     private fun observeTimeOut() {
         gameStartViewModel.navigateToEnd.observe(viewLifecycleOwner) {
