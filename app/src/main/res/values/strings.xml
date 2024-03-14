@@ -17,4 +17,11 @@
     <string name="home_unscramble">UNSCRAMBLE</string>
     <string name="home_start">START</string>
 
+    <!--end-->
+    <string name="end_btn_retry">RETRY</string>
+    <string name="end_btn_home">HOME</string>
+    <string name="end_time_out">Time out!</string>
+    <string name="end_game_clear">Game Clear!</string>
+    <string name="end_total_score">Score : %d</string>
+
 </resources>
